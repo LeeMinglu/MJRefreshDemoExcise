@@ -19,14 +19,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    // 马上进入刷新状态
+    [self.tableView.mj_header beginRefreshing];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
+//    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+//
 }
+
+- (void)loadNewData {
+    NSLog(@"刷新数据");
+    
+    [self.tableView.mj_header endRefreshing];
+}
+
+//- (void)loadMoreData {
+//    NSLog(@"刷新底部数据");
+//    [self.tableView.mj_footer endRefreshing];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
