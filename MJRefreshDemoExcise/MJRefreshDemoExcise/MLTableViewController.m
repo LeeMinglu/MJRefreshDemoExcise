@@ -8,21 +8,44 @@
 
 #import "MLTableViewController.h"
 #import "MJRefresh.h"
+#import "MLPerson.h"
+#import "Person.h"
 
 @interface MLTableViewController ()
-
+@property (nonatomic, strong) NSMutableArray *persons;
 
 @end
 
 @implementation MLTableViewController
 
+//1.懒加载
+- (NSMutableArray *)persons {
+    if (!_persons) {
+        _persons = [NSMutableArray array];
+    }
+    return _persons;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    for (int i = 0; i < 40; i ++) {
+        Person *person = [[Person alloc] init];
+        NSString *name = [NSString stringWithFormat:@"lala %d",i+1];
+        NSString *age = [NSString stringWithFormat:@"年龄：%d", i+1];
+        
+        person.name = name;
+        person.age = age;
+        
+        
+        [self.persons addObject:person];
+    }
+    
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     
     // 马上进入刷新状态
-    [self.tableView.mj_header beginRefreshing];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -31,20 +54,66 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
-//    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-//
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+
 }
 
 - (void)loadNewData {
     NSLog(@"刷新数据");
+    //开始刷新数据
+    [self.tableView.mj_header beginRefreshing];
+    NSMutableArray *newArray = [NSMutableArray array];
+    
+    for (int i = 0; i < 10; i ++) {
+        Person *person = [[Person alloc] init];
+        NSString *name = [NSString stringWithFormat:@"wowo%d",i+1];
+        NSString *age = [NSString stringWithFormat:@"年龄：%d", i+1];
+        
+        person.name = name;
+        person.age = age;
+        
+        [newArray addObject:person];
+    }
+    NSRange range = NSMakeRange(0, newArray.count);
+    
+    NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+    
+    [self.persons insertObjects:newArray atIndexes:set];
+    
+    [self.tableView reloadData];
+
     
     [self.tableView.mj_header endRefreshing];
 }
 
-//- (void)loadMoreData {
-//    NSLog(@"刷新底部数据");
-//    [self.tableView.mj_footer endRefreshing];
-//}
+- (void)loadMoreData {
+    NSLog(@"刷新底部数据");
+    
+    NSMutableArray *newArray = [NSMutableArray array];
+    
+    for (int i = 0; i < 10; i ++) {
+        Person *person = [[Person alloc] init];
+        NSString *name = [NSString stringWithFormat:@"bottomData%d",i+1];
+        NSString *age = [NSString stringWithFormat:@"年龄：%d", i+1];
+        
+        person.name = name;
+        person.age = age;
+        
+        [newArray addObject:person];
+    }
+//    NSRange range = NSMakeRange(0, newArray.count);
+//    
+//    NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+//    
+//    [self.persons insertObjects:newArray atIndexes:set];
+    
+    [self.persons addObjectsFromArray:newArray];
+    
+    [self.tableView reloadData];
+    
+
+    [self.tableView.mj_footer endRefreshing];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -53,25 +122,26 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    
+    return self.persons.count;
+
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    MLPerson *person = self.persons[indexPath.row];
+    
+    cell.textLabel.text = person.name;
+    cell.detailTextLabel.text = person.age;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

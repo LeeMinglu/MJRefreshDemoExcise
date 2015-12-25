@@ -32,6 +32,8 @@
 		1A11ABEA1C2C328500C552F1 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A11ABD61C2C328500C552F1 /* UIScrollView+MJRefresh.m */; };
 		1A11ABEB1C2C328500C552F1 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A11ABD81C2C328500C552F1 /* UIView+MJExtension.m */; };
 		1A11ABEE1C2C33FB00C552F1 /* MLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A11ABED1C2C33FB00C552F1 /* MLTableViewController.m */; };
+		1A572F7F1C2CC82300A39CE6 /* MLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A572F7C1C2CC82300A39CE6 /* MLPerson.m */; };
+		1A572F801C2CC82300A39CE6 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A572F7E1C2CC82300A39CE6 /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,10 @@
 		1A11ABD81C2C328500C552F1 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		1A11ABEC1C2C33FB00C552F1 /* MLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLTableViewController.h; sourceTree = "<group>"; };
 		1A11ABED1C2C33FB00C552F1 /* MLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLTableViewController.m; sourceTree = "<group>"; };
+		1A572F7B1C2CC82300A39CE6 /* MLPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPerson.h; sourceTree = "<group>"; };
+		1A572F7C1C2CC82300A39CE6 /* MLPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPerson.m; sourceTree = "<group>"; };
+		1A572F7D1C2CC82300A39CE6 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		1A572F7E1C2CC82300A39CE6 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,10 @@
 				1A11ABEC1C2C33FB00C552F1 /* MLTableViewController.h */,
 				1A11ABED1C2C33FB00C552F1 /* MLTableViewController.m */,
 				1A11AB9E1C2C322A00C552F1 /* Main.storyboard */,
+				1A572F7B1C2CC82300A39CE6 /* MLPerson.h */,
+				1A572F7C1C2CC82300A39CE6 /* MLPerson.m */,
+				1A572F7D1C2CC82300A39CE6 /* Person.h */,
+				1A572F7E1C2CC82300A39CE6 /* Person.m */,
 				1A11ABA11C2C322A00C552F1 /* Assets.xcassets */,
 				1A11ABA31C2C322A00C552F1 /* LaunchScreen.storyboard */,
 				1A11ABA61C2C322A00C552F1 /* Info.plist */,
@@ -316,11 +326,13 @@
 				1A11ABE51C2C328500C552F1 /* MJRefreshNormalHeader.m in Sources */,
 				1A11ABE01C2C328500C552F1 /* MJRefreshAutoStateFooter.m in Sources */,
 				1A11ABDA1C2C328500C552F1 /* MJRefreshBackFooter.m in Sources */,
+				1A572F7F1C2CC82300A39CE6 /* MLPerson.m in Sources */,
 				1A11AB971C2C322A00C552F1 /* main.m in Sources */,
 				1A11ABEE1C2C33FB00C552F1 /* MLTableViewController.m in Sources */,
 				1A11ABE81C2C328500C552F1 /* MJRefreshConst.m in Sources */,
 				1A11ABE21C2C328500C552F1 /* MJRefreshBackNormalFooter.m in Sources */,
 				1A11ABE61C2C328500C552F1 /* MJRefreshStateHeader.m in Sources */,
+				1A572F801C2CC82300A39CE6 /* Person.m in Sources */,
 				1A11ABDC1C2C328500C552F1 /* MJRefreshFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +480,7 @@
 				1A11ABAB1C2C322A00C552F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
